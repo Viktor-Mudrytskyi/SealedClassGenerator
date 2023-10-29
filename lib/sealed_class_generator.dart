@@ -65,7 +65,7 @@ String generateParams(ClassDataModel dataModel, bool isRequired) {
     final required = isRequired ? 'required' : '';
     final nullable=isRequired?'':'?';
     params +=
-        '$required T Function($currentClassName $currentFunctionName)$nullable $currentFunctionName,\n';
+        '$required T Function($currentClassName $currentFunctionName,)$nullable $currentFunctionName,\n';
   }
   return params;
 }
