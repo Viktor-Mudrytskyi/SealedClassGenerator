@@ -1,6 +1,6 @@
 import 'dart:convert';
+import 'extensions.dart';
 
-import 'package:sealed_class_generator/extensions.dart';
 
 class ClassDataModel{
     String sealedClassName='';

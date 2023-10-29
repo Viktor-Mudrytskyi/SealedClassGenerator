@@ -1,6 +1,5 @@
 import 'dart:io';
-
-import 'package:sealed_class_generator/class_data_model.dart';
+import 'class_data_model.dart';
 
 void writeToFile(File file) {
   try {
@@ -90,7 +89,7 @@ String generateMapBody(ClassDataModel dataModel) {
     final currentFunctionName = dataModel.functionNames[i];
     final currentClassName = dataModel.inheritorsNames[i];
     buffer.writeln(
-        '$currentClassName() => $currentFunctionName(this as $currentClassName),');
+        '$currentClassName() => $currentFunctionName(this as $currentClassName,),');
   }
   buffer.writeln('};');
   return buffer.toString();
@@ -103,7 +102,7 @@ String generateMaybeMapBody(ClassDataModel dataModel) {
     final currentFunctionName = dataModel.functionNames[i];
     final currentClassName = dataModel.inheritorsNames[i];
     buffer.writeln(
-        '$currentClassName() => $currentFunctionName!=null? $currentFunctionName(this as $currentClassName):orElse(),');
+        '$currentClassName() => $currentFunctionName!=null? $currentFunctionName(this as $currentClassName,):orElse(),');
   }
   buffer.writeln('};');
   return buffer.toString();
@@ -116,7 +115,7 @@ String generateMapOrNullBody(ClassDataModel dataModel) {
     final currentFunctionName = dataModel.functionNames[i];
     final currentClassName = dataModel.inheritorsNames[i];
     buffer.writeln(
-        '$currentClassName() => $currentFunctionName!=null? $currentFunctionName(this as $currentClassName):null,');
+        '$currentClassName() => $currentFunctionName!=null? $currentFunctionName(this as $currentClassName,):null,');
   }
   buffer.writeln('};');
   return buffer.toString();
